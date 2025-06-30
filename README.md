@@ -31,11 +31,10 @@
 <h2>🗂️ Project Structure</h2>
 <pre>
 📁 finetuned_model/           # Saved fine-tuned model
-📁 data/                      # CSV of original + transformed sentences
-📁 logs/, 📁 results/          # Optional training logs
+📁 Task_dataset.xlsx     
+📁 checkpoint-385
 📄 app.py                     # Streamlit web app
-📄 train_and_evaluate.ipynb   # Notebook for training, evaluation, explainability
-📄 README.html                # Project documentation
+📄 finetune_code.ipynb   # Notebook for training, evaluation, explainability
 </pre>
 
 <h2>⚙️ Installation</h2>
@@ -48,9 +47,7 @@ cd sentence-transformation-classifier
 python -m venv venv
 source venv/bin/activate  # Or .\venv\Scripts\activate on Windows
 
-# Install required libraries
-pip install -r requirements.txt
-</code></pre>
+
 
 <h2>📦 Required Libraries (Important)</h2>
 <pre><code>
