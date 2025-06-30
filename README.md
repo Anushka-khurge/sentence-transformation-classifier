@@ -1,18 +1,4 @@
-# sentence-transformation-classifier
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Sentence Transformation Classifier</title>
-  <style>
-    body { font-family: Arial, sans-serif; padding: 40px; line-height: 1.6; background: #f8f9fa; color: #333; }
-    h1, h2, h3 { color: #1a73e8; }
-    code { background: #eee; padding: 2px 4px; border-radius: 3px; }
-    pre { background: #f0f0f0; padding: 10px; border-radius: 5px; overflow-x: auto; }
-    ul { margin-bottom: 1rem; }
-  </style>
-</head>
-<body>
+
 
 <h1>🧠 Sentence Transformation Classifier using BERT</h1>
 
