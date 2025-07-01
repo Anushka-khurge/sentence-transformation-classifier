@@ -5,7 +5,7 @@ import torch.nn.functional as F
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-# Label classes (same order as training)
+# Label classes 
 labels = [
     "Active to Passive",
     "Passive to Active",
@@ -26,13 +26,13 @@ def load_model():
 model, tokenizer = load_model()
 
 # Streamlit UI
-st.title("🧠 Sentence Transformation Classifier with Explainability")
+st.title("🧠 Advanced Sentence Transformation Classifier ")
 st.markdown("Enter a **transformed sentence**, and I’ll predict the type of transformation applied along with an attention plot!")
 
 # Text input
 input_text = st.text_area("Enter transformed sentence:")
 
-# On click
+
 if st.button("Predict"):
     if not input_text.strip():
         st.warning("Please enter a sentence.")
@@ -40,7 +40,7 @@ if st.button("Predict"):
         # Tokenize
         inputs = tokenizer(input_text, return_tensors="pt", padding=True, truncation=True)
 
-        # Get prediction + attention
+        # Get prediction and attention
         with torch.no_grad():
             outputs = model(**inputs)
             logits = outputs.logits
@@ -50,15 +50,15 @@ if st.button("Predict"):
             confidence = probs[0][pred_idx].item() * 100
             attentions = outputs.attentions
 
-        # ✅ Output prediction
+        # Output prediction
         st.success(f"**Predicted Transformation:** {pred_label}")
         st.info(f"**Confidence:** {confidence:.2f}%")
 
-        # ✅ Process attention (CLS token to each word, last 4 layers avg)
+        # Process attention 
         tokens = tokenizer.convert_ids_to_tokens(inputs["input_ids"][0])
         cls_attention = torch.stack(attentions[-4:]).mean(dim=0)[0, :, 0, :].mean(dim=0).numpy()
 
-        # ✅ Plot attention
+        # Plot attention
         fig, ax = plt.subplots(figsize=(10, 3))
         sns.barplot(x=tokens, y=cls_attention, ax=ax)
         ax.set_title("Avg Attention from [CLS] to Each Token (Last 4 Layers, All Heads)")
